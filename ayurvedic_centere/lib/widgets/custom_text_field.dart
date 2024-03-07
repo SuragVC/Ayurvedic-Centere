@@ -1,3 +1,4 @@
+import 'package:ayurvedic_centere/constants/constant_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -9,13 +10,13 @@ class CustomTextField extends StatelessWidget {
   final TextInputType keyboardType;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.onChanged,
     required this.label,
     required this.hintText,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +25,16 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontWeight: FontWeight.w400,
-          ),
+          style: ConstantTextStyle.heading3,
         ),
-        Gap(8),
+        const Gap(8),
         TextField(
           onChanged: onChanged,
           obscureText: isPassword,
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey[400]),
+            hintStyle: const TextStyle(color: ConstantColors.backgroundColor),
             border: const OutlineInputBorder(),
           ),
         ),

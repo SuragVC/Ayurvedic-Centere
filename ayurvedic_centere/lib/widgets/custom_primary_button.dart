@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class CustomPrimaryButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String buttonText;
+  final bool isPrimary;
 
   const CustomPrimaryButton({
     Key? key,
     required this.onPressed,
     required this.buttonText,
+    this.isPrimary = true,
   }) : super(key: key);
 
   @override
@@ -18,8 +20,9 @@ class CustomPrimaryButton extends StatelessWidget {
         Expanded(
           child: ElevatedButton(
             style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all(ConstantColors.primaryColor),
+              backgroundColor: isPrimary
+                  ? MaterialStateProperty.all(ConstantColors.primaryColor)
+                  : MaterialStateProperty.all(ConstantColors.secondaryColor),
               padding: MaterialStateProperty.all(
                   const EdgeInsets.symmetric(vertical: 16, horizontal: 12)),
               shape: MaterialStateProperty.all(

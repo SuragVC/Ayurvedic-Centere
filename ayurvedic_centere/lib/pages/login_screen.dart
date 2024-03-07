@@ -1,3 +1,4 @@
+import 'package:ayurvedic_centere/pages/home_page.dart';
 import 'package:ayurvedic_centere/widgets/custom_primary_button.dart';
 import 'package:ayurvedic_centere/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Colors.grey[850],
                             fontSize: 24.0,
                             fontWeight: FontWeight.w600,
-                            height: 1.42, // line height = 34px / 24px
+                            height: 1.42,
                             letterSpacing: 0.2,
                           ),
                         ),
@@ -65,7 +66,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const Gap(80),
                         CustomPrimaryButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Homepage(),
+                              ),
+                            );
+                          },
                           buttonText: 'Log In',
                         ),
                         const Gap(20),
@@ -78,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.bottomCenter,
                 width: width,
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(
+                child: const Text(
                   "By creating or logging into an account you are agreeing with our Terms and Conditions and Privacy Policy.",
                   textAlign: TextAlign.center,
                 ),

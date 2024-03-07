@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Popins',
+        fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
       home: const LoginScreen(),
