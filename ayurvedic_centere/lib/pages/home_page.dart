@@ -78,7 +78,7 @@ class _HomepageState extends State<Homepage> {
                           builder: (context) => const RegisterPage()),
                     );
                   },
-                  buttonText: "Register",
+                  buttonText: "Register Now",
                 )),
               )
             ],
