@@ -5,7 +5,9 @@ AppBar appBar(BuildContext context) {
   return AppBar(
     leading: IconButton(
       icon: const Icon(Icons.arrow_back, color: ConstantColors.black),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pop(context);
+      },
     ),
     actions: [
       IconButton(
@@ -13,9 +15,7 @@ AppBar appBar(BuildContext context) {
           Icons.notifications_none,
           color: ConstantColors.black,
         ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
+        onPressed: () {},
       ),
     ],
   );
