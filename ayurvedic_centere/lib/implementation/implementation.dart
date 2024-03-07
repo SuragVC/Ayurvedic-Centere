@@ -29,4 +29,56 @@ class Implementation {
       return false;
     }
   }
+
+  static Future<bool> register({required Patient patient}) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    try {
+      String url = '$baseUrl/PatientUpdate';
+      var response = await dio.post(
+        url,
+        data: patient.toJson(),
+      );
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  static Future<bool> getPatientList() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String? token = await sharedPreferences.getString("token");
+    try {
+      FormData formData = FormData.fromMap({'token': token});
+      String url = '$baseUrl/PatientList';
+      var response = await dio.get(
+        url,
+        data: formData,
+      );
+      print(response);
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  static Future<bool> getBranchList() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String? token = await sharedPreferences.getString("token");
+    try {
+      FormData formData = FormData.fromMap({'token': token});
+      String url = '$baseUrl/BranchList';
+      var response = await dio.get(
+        url,
+        data: formData,
+      );
+      print(response);
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
 }

@@ -11,82 +11,109 @@ import 'package:gap/gap.dart';
 final providerNotifier =
     ChangeNotifierProvider<ProviderNotifier>((ref) => ProviderNotifier());
 
-class Homepage extends StatefulWidget {
+class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  ConsumerState<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends ConsumerState<Homepage> {
   @override
   Widget build(BuildContext context) {
+    var provider = ref.watch(providerNotifier);
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height - 100;
     return Scaffold(
       appBar: appBar(context),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(5.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: 50,
-                child: Row(
+          child: SizedBox(
+            width: width,
+            height: height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                        width: width * 0.7, child: const CustomSearchBar()),
-                    Gap(30),
-                    Expanded(
-                      child: CustomPrimaryButton(
-                        onPressed: () {},
-                        buttonText: "Search",
+                      height: 50,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                              width: width * 0.7,
+                              child: const CustomSearchBar()),
+                          Gap(30),
+                          Expanded(
+                            child: CustomPrimaryButton(
+                              onPressed: () {},
+                              buttonText: "Search",
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-              ),
-              const Gap(20),
-              const SizedBox(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(flex: 3, child: Text("Sort By :")),
-                        Gap(30),
-                        Expanded(
-                          flex: 3,
-                          child: CustomDropDown(
-                            values: ["Date", "Price", "Rating"],
-                          ),
-                        )
-                      ],
                     ),
-                    Divider(
-                      color: Colors.grey,
-                    )
+                    const Gap(20),
+                    SizedBox(
+                      height: height * 0.3,
+                      child: const SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(flex: 3, child: Text("Sort By :")),
+                                Gap(30),
+                                Expanded(
+                                  flex: 3,
+                                  child: CustomDropDown(
+                                    values: ["Date", "Price", "Rating"],
+                                  ),
+                                )
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    provider.patientList.isEmpty
+                        ? Center(
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/no_customer.jpg',
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.fill,
+                                ),
+                                const Text("No records found")
+                              ],
+                            ),
+                          )
+                        : SizedBox(),
                   ],
                 ),
-              ),
-              // Column(
-              //   children: List.generate(length, (index) => null),
-              // ),
-              SizedBox(
-                height: 50,
-                child: Expanded(
-                    child: CustomPrimaryButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RegisterPage()),
-                    );
-                  },
-                  buttonText: "Register Now",
-                )),
-              )
-            ],
+                SizedBox(
+                  height: 50,
+                  child: CustomPrimaryButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterPage()),
+                      );
+                    },
+                    buttonText: "Register Now",
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
