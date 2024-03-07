@@ -6,6 +6,7 @@ class ConstantColors {
   static const Color white = Colors.white;
   static const Color black = Colors.black;
   static const Color backgroundColor = Color(0xFFE0E0E0);
+  static const Color textColor = Color(0xFF9E9E9E);
 }
 
 class ConstantTextStyle {

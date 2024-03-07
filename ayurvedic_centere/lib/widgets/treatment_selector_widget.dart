@@ -1,12 +1,16 @@
 import 'package:ayurvedic_centere/constants/constant_colors.dart';
 import 'package:ayurvedic_centere/widgets/count_seletor_widget.dart';
 import 'package:ayurvedic_centere/widgets/custom_dropdown_with_label.dart';
+import 'package:ayurvedic_centere/widgets/custom_primary_button.dart';
 import 'package:ayurvedic_centere/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class TreatmentSelector extends StatefulWidget {
+  const TreatmentSelector({super.key});
+
   @override
-  _TreatmentSelectorState createState() => _TreatmentSelectorState();
+  State createState() => _TreatmentSelectorState();
 }
 
 class _TreatmentSelectorState extends State<TreatmentSelector> {
@@ -34,27 +38,51 @@ class _TreatmentSelectorState extends State<TreatmentSelector> {
               hintText: 'Choose preffered treatment',
             ),
           ),
-          Column(
-            children: [
-              Text(
-                "Add Patients",
-                style: ConstantTextStyle.heading3,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      label: "",
-                      hintText: "Male",
-                      onChanged: (value) {},
-                    ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Column(
+              children: [
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Add Patients",
+                    style: ConstantTextStyle.heading3,
                   ),
-                  Expanded(
-                    child: CountSelectorWidget(),
-                  )
-                ],
-              )
-            ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        label: "",
+                        hintText: "Male",
+                        onChanged: (value) {},
+                      ),
+                    ),
+                    const Gap(20),
+                    const Expanded(
+                      child: CountSelectorWidget(),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        label: "",
+                        hintText: "Female",
+                        onChanged: (value) {},
+                      ),
+                    ),
+                    const Gap(20),
+                    const Expanded(
+                      child: CountSelectorWidget(),
+                    )
+                  ],
+                ),
+                const Gap(40),
+                CustomPrimaryButton(onPressed: () {}, buttonText: "Save")
+              ],
+            ),
           )
         ],
       ),

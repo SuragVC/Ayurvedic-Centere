@@ -90,7 +90,7 @@ class _RegisterState extends State<RegisterPage> {
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return Dialog(
+                                return const Dialog(
                                   child: TreatmentSelector(),
                                 );
                               },
@@ -112,12 +112,12 @@ class _RegisterState extends State<RegisterPage> {
                     label: "Discount Amount",
                   ),
                   const Gap(10),
-                  PaymentOption(),
+                  const PaymentOption(),
                   const Gap(10),
                   CustomTextField(
                     hintText: "",
                     onChanged: (value) {},
-                    label: "Balance Amount",
+                    label: "Advance Amount",
                   ),
                   const Gap(10),
                   CustomTextField(
@@ -125,6 +125,9 @@ class _RegisterState extends State<RegisterPage> {
                     onChanged: (value) {},
                     label: "Treatment Date",
                   ),
+                  const Gap(30),
+                  CustomPrimaryButton(onPressed: () {}, buttonText: "Save"),
+                  const Gap(10),
                 ],
               ),
             ),
