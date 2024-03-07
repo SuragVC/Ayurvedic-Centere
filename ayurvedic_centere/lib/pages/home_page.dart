@@ -1,10 +1,15 @@
+import 'package:ayurvedic_centere/implementation/notifier.dart';
 import 'package:ayurvedic_centere/pages/registration_page.dart';
 import 'package:ayurvedic_centere/widgets/app_bar.dart';
 import 'package:ayurvedic_centere/widgets/custom_drop_down.dart';
 import 'package:ayurvedic_centere/widgets/custom_primary_button.dart';
 import 'package:ayurvedic_centere/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+
+final providerNotifier =
+    ChangeNotifierProvider<ProviderNotifier>((ref) => ProviderNotifier());
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

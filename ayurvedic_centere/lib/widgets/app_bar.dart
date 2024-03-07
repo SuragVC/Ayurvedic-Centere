@@ -1,4 +1,4 @@
-import 'package:ayurvedic_centere/constants/constant_colors.dart';
+import 'package:ayurvedic_centere/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 AppBar appBar(BuildContext context) {
