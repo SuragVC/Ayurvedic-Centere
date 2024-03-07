@@ -1,6 +1,7 @@
 import 'package:ayurvedic_centere/pages/home_page.dart';
 import 'package:ayurvedic_centere/widgets/custom_primary_button.dart';
 import 'package:ayurvedic_centere/widgets/custom_text_field.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gap/gap.dart';
@@ -86,11 +87,41 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.bottomCenter,
                 width: width,
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: const Text(
-                  "By creating or logging into an account you are agreeing with our Terms and Conditions and Privacy Policy.",
+                child: RichText(
                   textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: [
+                      const TextSpan(
+                        text:
+                            "By creating or logging into an account you are agreeing with our ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: "Terms and Conditions",
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 0, 115, 209)),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Handle Terms and Conditions click
+                          },
+                      ),
+                      const TextSpan(
+                        text: " and ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: "Privacy Policy",
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 0, 115, 209)),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Handle Privacy Policy click
+                          },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),
