@@ -28,14 +28,19 @@ class CustomTextField extends StatelessWidget {
           style: ConstantTextStyle.heading3,
         ),
         const Gap(8),
-        TextField(
-          onChanged: onChanged,
-          obscureText: isPassword,
-          keyboardType: keyboardType,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: const TextStyle(color: ConstantColors.textColor),
-            border: const OutlineInputBorder(),
+        SizedBox(
+          height: 55,
+          child: TextField(
+            onChanged: onChanged,
+            obscureText: isPassword,
+            keyboardType: keyboardType,
+            decoration: InputDecoration(
+              fillColor: ConstantColors.backgroundColor,
+              hintText: hintText,
+              hintStyle: const TextStyle(color: ConstantColors.textColor),
+              border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(14))),
+            ),
           ),
         ),
       ],
